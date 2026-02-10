@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">Daily Planner</p>
+          <h1>To-Do List</h1>
+          <p class="app__subtitle">Organize tasks, set priorities, and stay focused.</p>
+        </div>
+        <div class="app__summary" aria-live="polite">
+          <span id="task-count">0</span> tasks
+          <span class="app__summary-divider">•</span>
+          <span id="completed-count">0</span> completed
+        </div>
+      </header>
+
+      <section class="app__panel">
+        <form id="task-form" class="task-form" autocomplete="off">
+          <div class="task-form__group">
+            <label for="task-input">Task</label>
+            <input
+              id="task-input"
+              name="task"
+              type="text"
+              placeholder="Add a new task"
+              required
+            />
+          </div>
+          <div class="task-form__group">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="task-form__group">
+            <label for="task-due">Due</label>
+            <input id="task-due" name="due" type="date" />
+          </div>
+          <button class="btn btn--primary" type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section class="app__panel">
+        <div class="toolbar">
+          <div class="toolbar__filters" role="tablist">
+            <button class="filter-btn is-active" data-filter="all" role="tab">All</button>
+            <button class="filter-btn" data-filter="active" role="tab">Active</button>
+            <button class="filter-btn" data-filter="completed" role="tab">Completed</button>
+          </div>
+          <div class="toolbar__actions">
+            <label class="toggle">
+              <input type="checkbox" id="hide-completed" />
+              <span>Hide completed</span>
+            </label>
+            <button class="btn btn--ghost" id="clear-completed" type="button">Clear completed</button>
+          </div>
+        </div>
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty-state">No tasks yet. Add your first to-do above.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
